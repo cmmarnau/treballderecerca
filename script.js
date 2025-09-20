@@ -47,15 +47,6 @@ async function carregarParticipantsOnline() {
   }
 }
 
-     
-      baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
-    }
-  } catch (error) {
-    console.error('Error carregant participants:', error);
-    baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
-  }
-}
-
 function començarTest() {
   const edat = document.getElementById('edat').value;
   const sexe = document.getElementById('sexe').value;
@@ -158,5 +149,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'none';
 });
+
 
 
