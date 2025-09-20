@@ -1,4 +1,4 @@
-/* Estils generals */
+
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@ body {
   padding: 20px;
 }
 
-/* Menú principal */
+
 #menu-principal {
   max-width: 500px;
   margin: 50px auto;
@@ -30,7 +30,7 @@ body {
   font-weight: 300;
 }
 
-/* Formulari */
+
 #formulari-dades {
   text-align: left;
 }
@@ -58,7 +58,7 @@ body {
   background: #f8f9fa;
 }
 
-/* Eliminar fletxes dels inputs de tipus number */
+
 .camp-formulari input[type="number"] {
   -moz-appearance: textfield;
   -webkit-appearance: none;
@@ -79,7 +79,7 @@ body {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Botons */
+
 button {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
@@ -103,7 +103,7 @@ button:active {
   transform: translateY(0);
 }
 
-/* Test */
+
 #quiz {
   max-width: 800px;
   margin: 0 auto;
@@ -144,7 +144,7 @@ button:active {
   margin-bottom: 30px;
 }
 
-/* Opcions */
+
 .opcions {
   margin: 30px 0;
 }
@@ -180,7 +180,7 @@ button:active {
   transform: translateX(10px);
 }
 
-/* Navegació */
+
 .navegacio {
   display: flex;
   justify-content: space-between;
@@ -189,13 +189,13 @@ button:active {
   border-top: 2px solid #e1e5e9;
 }
 
-/* Imatges */
+
 img {
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/* Resultats */
+
 .resultats {
   max-width: 600px;
   margin: 50px auto;
@@ -233,7 +233,7 @@ img {
   opacity: 0.9;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   body {
     padding: 10px;
@@ -265,7 +265,7 @@ img {
   }
 }
 
-/* Animacions addicionals */
+
 .opcions label {
   position: relative;
   overflow: hidden;
@@ -286,7 +286,7 @@ img {
   left: 100%;
 }
 
-/* Estils per a estadístiques (si les vols afegir) */
+
 .estadistiques {
   background: #f8f9fa;
   border-radius: 10px;
@@ -305,3 +305,4 @@ img {
   margin: 8px 0;
   color: #555;
 }
+
