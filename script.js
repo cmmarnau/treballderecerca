@@ -107,7 +107,30 @@ function finish() {
   window.participantActual.puntuacio = correctes;
   window.participantActual.percentatge = (correctes / 5) * 100;
   
-  guardarParticipantOnline(window.participantActual);
+async function finish() {
+  guardarRespostaActual();
+  
+  let correctes = 0;
+  for (let i=1; i<=5; i++) {
+    const val = document.querySelector('input[name="p'+i+'"]:checked');
+    if (val && val.value === respostesCorrectes[i-1]) correctes++;
+  }
+  
+  window.participantActual.dataFi = new Date().toISOString();
+  window.participantActual.puntuacio = correctes;
+  window.participantActual.percentatge = (correctes / 5) * 100;
+  
+  // WAIT for the online save to finish
+  await guardarParticipantOnline(window.participantActual);
+  
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('resultats').style.display = 'block';
+  document.getElementById('puntuacio').innerHTML = `
+    <h3>Puntuació: ${correctes}/5 (${window.participantActual.percentatge.toFixed(1)}%)</h3>
+    <p><strong>Dades del participant:</strong></p>
+    <p>Edat: ${window.participantActual.edat} | Sexe: ${window.participantActual.sexe} | Estudis: ${window.participantActual.estudis}</p>
+  `;
+}
   
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'block';
@@ -149,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'none';
 });
+
 
 
 
