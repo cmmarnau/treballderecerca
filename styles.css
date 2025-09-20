@@ -58,6 +58,19 @@ body {
   background: #f8f9fa;
 }
 
+/* Eliminar fletxes dels inputs de tipus number */
+.camp-formulari input[type="number"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.camp-formulari input[type="number"]::-webkit-outer-spin-button,
+.camp-formulari input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .camp-formulari input:focus,
 .camp-formulari select:focus {
   outline: none;
