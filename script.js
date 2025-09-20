@@ -33,10 +33,20 @@ async function guardarParticipantOnline(participant) {
 
 async function carregarParticipantsOnline() {
   try {
-    const response = await fetch('/api/participants');
+    const response = await fetch('https://script.google.com/macros/s/AKfycbxP2zqiDXPwF37HisRUtIn80LEVhnU7qCtZyWREzbt2gquicJXylSPeHSDHt2WjcdA6/exec'); // ✅ your Web App URL
     if (response.ok) {
-      baseDades = await response.json();
+      const result = await response.json();
+      // The Apps Script doGet returns {status:"success", data:[...]}
+      baseDades = result.data || [];
     } else {
+      baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
+    }
+  } catch (error) {
+    console.error('Error carregant participants:', error);
+    baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
+  }
+}
+
      
       baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
     }
@@ -148,4 +158,5 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'none';
 });
+
 
