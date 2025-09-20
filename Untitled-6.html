@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Menú principal -->
+  <div id="menu-principal">
+    <h1>Test de Coneixements</h1>
+    <form id="formulari-dades">
+      <div class="camp-formulari">
+        <label for="edat">Edat:</label>
+        <input type="number" id="edat" name="edat" min="10" max="100" required>
+      </div>
+      
+      <div class="camp-formulari">
+        <label for="sexe">Sexe:</label>
+        <select id="sexe" name="sexe" required>
+          <option value="">Selecciona...</option>
+          <option value="home">Home</option>
+          <option value="dona">Dona</option>
+          <option value="altre">Altre</option>
+          <option value="prefereixo-no-dir-ho">Prefereixo no dir-ho</option>
+        </select>
+      </div>
+      
+      <div class="camp-formulari">
+        <label for="estudis">Nivell d'estudis:</label>
+        <select id="estudis" name="estudis" required>
+          <option value="">Selecciona...</option>
+          <option value="eso">ESO</option>
+          <option value="batxillerat">Batxillerat</option>
+          <option value="universitat">Universitat</option>
+        </select>
+      </div>
+      
+      <button type="button" onclick="començarTest()">Començar Test</button>
+    </form>
+  </div>
+
+  <!-- Test -->
+  <div id="quiz" style="display: none;">
+    <div class="pregunta activa" id="q1">
+      <h2>Pregunta 1</h2>
+      <p>Què ve després en aquesta seqüència: 2, 6, 18, 54, ?</p>
+      <div class="opcions">
+        <label><input type="radio" name="p1" value="108">108</label>
+        <label><input type="radio" name="p1" value="162">162</label>
+        <label><input type="radio" name="p1" value="216">216</label>
+        <label><input type="radio" name="p1" value="324">324</label>
+      </div>
+      <div class="navegacio">
+        <button onclick="next(1)">Següent</button>
+      </div>
+    </div>
+    <div class="pregunta" id="q2">
+      <h2>Pregunta 2</h2>
+      <p>Quina paraula no pertany al grup: Poma, Taronja, Pastanaga, Plàtan, Raïm</p>
+      <div class="opcions">
+        <label><input type="radio" name="p2" value="Poma">Poma</label>
+        <label><input type="radio" name="p2" value="Taronja">Taronja</label>
+        <label><input type="radio" name="p2" value="Pastanaga">Pastanaga</label>
+        <label><input type="radio" name="p2" value="Plàtan">Plàtan</label>
+        <label><input type="radio" name="p2" value="Raïm">Raïm</label>
+      </div>
+      <div class="navegacio">
+        <button onclick="prev(2)">Anterior</button>
+        <button onclick="next(2)">Següent</button>
+      </div>
+    </div>
+    <div class="pregunta" id="q3">
+      <h2>Pregunta 3</h2>
+      <p>Si 3x + 7 = 22, quin és el valor de x?</p>
+      <div class="opcions">
+        <label><input type="radio" name="p3" value="5">5</label>
+        <label><input type="radio" name="p3" value="6">6</label>
+        <label><input type="radio" name="p3" value="7">7</label>
+        <label><input type="radio" name="p3" value="8">8</label>
+      </div>
+      <div class="navegacio">
+        <button onclick="prev(3)">Anterior</button>
+        <button onclick="next(3)">Següent</button>
+      </div>
+    </div>
+    <div class="pregunta" id="q4">
+      <h2>Pregunta 4</h2>
+      <p>Quants triangles pots comptar en una estrella de David?</p>
+      <div style="text-align:center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Star_of_David.svg" 
+             alt="Estrella de David" style="max-width:150px;">
+      </div>
+      <div class="opcions">
+        <label><input type="radio" name="p4" value="6">6</label>
+        <label><input type="radio" name="p4" value="8">8</label>
+        <label><input type="radio" name="p4" value="7">7</label>
+        <label><input type="radio" name="p4" value="10">10</label>
+      </div>
+      <div class="navegacio">
+        <button onclick="prev(4)">Anterior</button>
+        <button onclick="next(4)">Següent</button>
+      </div>
+    </div>
+    <div class="pregunta" id="q5">
+      <h2>Pregunta 5</h2>
+      <p>Completa el patró: A1, C3, E5, G7, ?</p>
+      <div class="opcions">
+        <label><input type="radio" name="p5" value="H8">H8</label>
+        <label><input type="radio" name="p5" value="I9">I9</label>
+        <label><input type="radio" name="p5" value="J10">J10</label>
+        <label><input type="radio" name="p5" value="K11">K11</label>
+      </div>
+      <div class="navegacio">
+        <button onclick="prev(5)">Anterior</button>
+        <button onclick="finish()">Finalitzar</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Resultats -->
+  <div class="resultats" id="resultats" style="display: none;">
+    <h2>Resultats del Test</h2>
+    <div id="puntuacio"></div>
+    <button onclick="restart()">Tornar a començar</button>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

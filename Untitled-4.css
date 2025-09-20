@@ -1,0 +1,294 @@
+/* Estils generals */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Menú principal */
+#menu-principal {
+  max-width: 500px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  padding: 40px;
+  text-align: center;
+}
+
+#menu-principal h1 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+/* Formulari */
+#formulari-dades {
+  text-align: left;
+}
+
+.camp-formulari {
+  margin-bottom: 25px;
+}
+
+.camp-formulari label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.camp-formulari input,
+.camp-formulari select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.camp-formulari input:focus,
+.camp-formulari select:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Botons */
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+  min-width: 120px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Test */
+#quiz {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.pregunta {
+  display: none;
+  padding: 40px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.pregunta.activa {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pregunta h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-weight: 300;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.pregunta p {
+  color: #555;
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Opcions */
+.opcions {
+  margin: 30px 0;
+}
+
+.opcions label {
+  display: block;
+  margin: 15px 0;
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border: 2px solid #e1e5e9;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1em;
+}
+
+.opcions label:hover {
+  background: #e3f2fd;
+  border-color: #667eea;
+  transform: translateX(5px);
+}
+
+.opcions input[type="radio"] {
+  margin-right: 15px;
+  transform: scale(1.2);
+}
+
+.opcions input[type="radio"]:checked + span,
+.opcions label:has(input[type="radio"]:checked) {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  transform: translateX(10px);
+}
+
+/* Navegació */
+.navegacio {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 2px solid #e1e5e9;
+}
+
+/* Imatges */
+img {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Resultats */
+.resultats {
+  max-width: 600px;
+  margin: 50px auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  padding: 40px;
+  text-align: center;
+}
+
+.resultats h2 {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+
+#puntuacio {
+  margin: 30px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+#puntuacio h3 {
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+
+#puntuacio p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  #menu-principal,
+  #quiz,
+  .resultats {
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .pregunta h2 {
+    font-size: 1.5em;
+  }
+  
+  .pregunta p {
+    font-size: 1em;
+  }
+  
+  .navegacio {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Animacions addicionals */
+.opcions label {
+  position: relative;
+  overflow: hidden;
+}
+
+.opcions label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.opcions label:hover::before {
+  left: 100%;
+}
+
+/* Estils per a estadístiques (si les vols afegir) */
+.estadistiques {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.estadistiques h4 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+.estadistiques p {
+  margin: 8px 0;
+  color: #555;
+}
