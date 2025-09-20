@@ -3,6 +3,49 @@ let baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
 
 const respostesCorrectes = ["162", "Pastanaga", "5", "8", "I9"];
 
+// Funció per guardar a l'API online
+async function guardarParticipantOnline(participant) {
+  try {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbxP2zqiDXPwF37HisRUtIn80LEVhnU7qCtZyWREzbt2gquicJXylSPeHSDHt2WjcdA6/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(participant)
+    });
+    
+    if (response.ok) {
+      console.log('Participant guardat online');
+    } else {
+      // Fallback a localStorage si falla l'API
+      console.log('API no disponible, guardant localment');
+      baseDades.push(participant);
+      localStorage.setItem('testResults', JSON.stringify(baseDades));
+    }
+  } catch (error) {
+    console.error('Error guardant participant:', error);
+    // Fallback a localStorage
+    baseDades.push(participant);
+    localStorage.setItem('testResults', JSON.stringify(baseDades));
+  }
+}
+
+// Funció per carregar dades de l'API online
+async function carregarParticipantsOnline() {
+  try {
+    const response = await fetch('/api/participants');
+    if (response.ok) {
+      baseDades = await response.json();
+    } else {
+      // Fallback a localStorage
+      baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
+    }
+  } catch (error) {
+    console.error('Error carregant participants:', error);
+    baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
+  }
+}
+
 function començarTest() {
   const edat = document.getElementById('edat').value;
   const sexe = document.getElementById('sexe').value;
@@ -68,9 +111,8 @@ function finish() {
   window.participantActual.puntuacio = correctes;
   window.participantActual.percentatge = (correctes / 5) * 100;
   
-  // Guardar a la base de dades
-  baseDades.push({...window.participantActual});
-  localStorage.setItem('testResults', JSON.stringify(baseDades));
+  // Guardar a la base de dades online (amb fallback local)
+  guardarParticipantOnline(window.participantActual);
   
   // Mostrar resultats
   document.getElementById('quiz').style.display = 'none';
@@ -108,8 +150,11 @@ function veureEstadistiques() {
   console.log('Base de dades completa:', baseDades);
 }
 
-// Initialize - mostrar menú principal
+// Initialize - mostrar menú principal i carregar dades online
 document.addEventListener('DOMContentLoaded', function() {
+  // Carregar dades online (amb fallback local)
+  carregarParticipantsOnline();
+  
   document.getElementById('menu-principal').style.display = 'block';
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'none';
