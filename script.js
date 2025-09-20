@@ -1,6 +1,6 @@
 let baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
 const respostesCorrectes = ["162", "Pastanaga", "5", "8", "I9"];
-const webAppURL = "https://script.google.com/macros/s/AKfycbyLNlal4NsBc_xctz3Eg0lXdkx5UlUSgsE4eI4dBhIjnLLItiNhJYbDNVz-ZeMgiaP7TA/exec"; // <-- Replace with your Web App URL
+const webAppURL = "https://script.google.com/macros/s/AKfycbwrkEcM1Z2JO2lbiYOAMDaKx0j543uijIUS9xsUGmKFa5LYJJFxJMEK3NId38j52ONk_A/exec"; // <-- Replace with your Web App URL
 
 async function guardarParticipantOnline(participant) {
   try {
@@ -96,4 +96,5 @@ function restart(){
 }
 
 document.addEventListener('DOMContentLoaded', carregarParticipantsOnline);
+
 
