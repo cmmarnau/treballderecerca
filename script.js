@@ -1,9 +1,7 @@
-// Base de dades local (en un projecte real usaries un servidor)
 let baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
 
 const respostesCorrectes = ["162", "Pastanaga", "5", "8", "I9"];
 
-// Funció per guardar a l'API online
 async function guardarParticipantOnline(participant) {
   try {
     const response = await fetch('/api/participants', {
@@ -17,27 +15,23 @@ async function guardarParticipantOnline(participant) {
     if (response.ok) {
       console.log('Participant guardat online');
     } else {
-      // Fallback a localStorage si falla l'API
       console.log('API no disponible, guardant localment');
       baseDades.push(participant);
       localStorage.setItem('testResults', JSON.stringify(baseDades));
     }
   } catch (error) {
     console.error('Error guardant participant:', error);
-    // Fallback a localStorage
     baseDades.push(participant);
     localStorage.setItem('testResults', JSON.stringify(baseDades));
   }
 }
 
-// Funció per carregar dades de l'API online
 async function carregarParticipantsOnline() {
   try {
     const response = await fetch('/api/participants');
     if (response.ok) {
       baseDades = await response.json();
     } else {
-      // Fallback a localStorage
       baseDades = JSON.parse(localStorage.getItem('testResults')) || [];
     }
   } catch (error) {
@@ -56,7 +50,6 @@ function començarTest() {
     return;
   }
   
-  // Guardar dades del participant
   window.participantActual = {
     edat: parseInt(edat),
     sexe: sexe,
@@ -65,7 +58,6 @@ function començarTest() {
     respostes: []
   };
   
-  // Mostrar test i amagar menú
   document.getElementById('menu-principal').style.display = 'none';
   document.getElementById('quiz').style.display = 'block';
   show(0);
@@ -76,7 +68,6 @@ function show(n) {
 }
 
 function next(n) { 
-  // Guardar resposta actual abans de continuar
   guardarRespostaActual();
   show(n); 
 }
@@ -97,7 +88,6 @@ function guardarRespostaActual() {
 }
 
 function finish() {
-  // Guardar última resposta
   guardarRespostaActual();
   
   let correctes = 0;
@@ -106,15 +96,12 @@ function finish() {
     if (val && val.value === respostesCorrectes[i-1]) correctes++;
   }
   
-  // Completar dades del participant
   window.participantActual.dataFi = new Date().toISOString();
   window.participantActual.puntuacio = correctes;
   window.participantActual.percentatge = (correctes / 5) * 100;
   
-  // Guardar a la base de dades online (amb fallback local)
   guardarParticipantOnline(window.participantActual);
   
-  // Mostrar resultats
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'block';
   document.getElementById('puntuacio').innerHTML = `
@@ -135,7 +122,6 @@ function restart() {
   window.participantActual = null;
 }
 
-// Funció per veure estadístiques (opcional)
 function veureEstadistiques() {
   if (baseDades.length === 0) {
     alert('No hi ha dades disponibles encara.');
@@ -150,12 +136,11 @@ function veureEstadistiques() {
   console.log('Base de dades completa:', baseDades);
 }
 
-// Initialize - mostrar menú principal i carregar dades online
 document.addEventListener('DOMContentLoaded', function() {
-  // Carregar dades online (amb fallback local)
   carregarParticipantsOnline();
   
   document.getElementById('menu-principal').style.display = 'block';
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('resultats').style.display = 'none';
 });
+
